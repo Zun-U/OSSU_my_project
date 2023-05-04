@@ -60,3 +60,43 @@ print(big)
 
 tiny = min('Hello World')
 print(tiny)
+
+
+# 独自の関数構築
+
+# 「def」はストアであり、呼び出しは「再利用」
+
+x = 5
+print('Hello')
+
+# ストアフェーズ
+def print_lyrics() :
+  print("I'm a lumberjack, and I'm okay. ")
+  print('I sleep all night and I work all day. ')
+
+print('Yo!')
+
+# functionのinvoke(呼び出し)(call, return, invoke)
+print_lyrics()
+x = x + 2
+print(x)
+
+
+# 引数を利用して、微妙に調整することではるかに便利で再利用な関数になる
+
+def greet(lang) :
+  # ❐❐ 引数であるlang変数は、ある意で関数の存続期間中にのみ存在する ❐❐
+  # 一種のプレイスホルダーを表す（正式な値が入るまで一時的に場所を確保しておく措置「で仮に入れておく値」のこと）
+  # ※実際の変数ではない
+  if lang == 'es':
+    print('Hola')
+  elif lang == 'fr':
+    print('Bonjour')
+  else:
+    print('Hello')
+
+greet('es') # ここでlangはenのエイリアスになる
+greet('fr')
+greet('abc123')
+
+# 「alias」 エイリアス -- ある対象や実体を、複数の異なるシンボルや識別子で同じように参照できるする仕組みを指す。 別名。
