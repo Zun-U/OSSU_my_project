@@ -95,8 +95,68 @@ def greet(lang) :
   else:
     print('Hello')
 
-greet('es') # ここでlangはenのエイリアスになる
+greet('es') # ここでdefで定義した(lang)は('en')のエイリアスになる。（enはlangとして関数に渡される）
 greet('fr')
 greet('abc123')
 
-# 「alias」 エイリアス -- ある対象や実体を、複数の異なるシンボルや識別子で同じように参照できるする仕組みを指す。 別名。
+# 「alias」 エイリアス -- ある対象や実体を、複数の異なるシンボルや識別子で同じように参照できるする仕組みを指す
+# 「別名」のこと
+
+
+
+
+# Return Values
+
+def greet2() :
+
+  # return statement
+  # ********************************************************
+  # 1.「終了する」
+  # Pythonがreturn statementに入ると次の行に進まない、戻るだけ
+  # これで、特定の関数の呼び出しが終了する
+  # ☆重要なことは、パラメーターなしで「return」ということができる。つまり、関数の実行を「停止」する意味合いもある
+
+  # 2.「値を呼び出し元へ返す」
+  #「残差値」
+  return "Hello"
+  # ********************************************************
+
+print(greet2(), "Glenn")
+print(greet2(), "Sally")
+
+
+# 値を返す関数は、returnというだけ、もしくは関数の最後の行で自動的にreturnを行う
+
+# 「return」を使用することでより関数のようになる
+# 入力を受け取り、単に出力するだけでなく、戻り値として出力を生成するため、関数が出力するのは少し粘着性がある
+def greet3(lang):
+  if lang == 'es':
+    return 'Hola'
+  elif lang == 'fr':
+    return 'Bonjour'
+  else:
+    return 'Hello'
+
+print(greet3('en'), 'Glenn')
+print(greet3('es'), 'Sally')
+print(greet3('fr'), 'Micheal')
+
+# returnがある場合があれば、returnがない場合もある
+
+
+# Multiple Parameters / Arguments
+# 複数の引数を指定できる（好きな数だけ）
+# ただし、「順番」が大切
+def addtwo(a, b):
+  added = a + b
+  return added
+
+# パラメーターが必要な関数にパラメーターを渡さないと爆発する（トレースバックが起る）
+x = addtwo(3, 5)
+print(x)
+
+
+
+# Void(non-fruitful) Functions
+# 値を指定して、戻り値を呼び出さない関数
+# ❐❐　戻り値は関数の最後の行として暗黙的に発生する　❐❐
