@@ -131,3 +131,103 @@ for the_num in [9, 41, 12, 3, 74, 15] : # 「the_num」は反復変数
   print(largest_so_far, the_num)
 
 print('After', largest_so_far)
+
+
+# Counting in a Loop (回数)
+zork = 0 # この変数は記憶術で「カウント」と呼ばれることがよくある
+print('Before', zork)
+for thing in [9, 41, 12, 3, 74, 15] :
+  zork = zork + 1
+  print(zork, thing)
+print('After', zork)
+
+
+# Summing in a Loop (合計)
+zork = 0
+print('Before', zork)
+for thing in [9, 41, 12, 3, 74, 15] :
+  zork = zork + thing
+  print(zork, thing)
+print('After', zork)
+
+
+
+# Finding the Average in a Loop (平均)
+count = 0
+sum = 0
+# 「count」、「sum」はニーモニック変数（人間が分かりやすい変数"名"。Pythonの予約語ではない）
+
+print('Before', count, sum)
+for value in [9, 41, 12, 3, 74, 15] :
+  count = count + 1
+  sum = sum + value
+  print(count, sum)
+print('After', count, sum, sum / count)
+
+
+
+# Filtering in a Loop (仕分け)
+print('Before')
+for value in [9, 41, 12, 3, 74, 15] :
+  if value > 20 : # if statementの部分がFilterの機能をしている
+    print('Large number', value)
+print('After')
+
+
+
+# Serch Using a Boolean Variable (検索)
+found = False
+print('Before', found)
+for value in [9, 41, 12, 3, 74, 15] :
+  if value == 3 : # 「3」が見つかったかどうかの判断
+    found = True
+    # break # 「break」を入れるとループを抜け出すことができる
+  print(found, value)
+print('After', value)
+
+
+
+# How to find the smallest value (最小値)
+
+# 最大値のループ
+largest_so_far = -1
+print('Before', largest_so_far)
+for the_num in [9, 41, 12, 3, 74, 15] :
+  if the_num > largest_so_far :
+    largest_so_far = the_num
+  print(largest_so_far, the_num)
+
+print('After', largest_so_far)
+
+
+# 最小値のループ
+
+# 最初の値を取得するテクニック
+smallest = None # None型(値が１つしかないという点で特別なマーカー。booleanには「true」、「false」の２つがある。)
+# ❐❐  大文字「None」は定数　❐❐
+# Noneは存在しないのではなく、「空であることを示す」ためによく使用される（数字ですらない）
+# ※ループが始まる前は、これまで見た最小の数はどれも私たちが見たことのない数ではないという概念を実際にとらえる
+
+print('Before', smallest)
+for value in [9, 41, 12, 3, 74, 15] : # 最初の番号が分かれば、それ以降の番号と比較ができる(ここでは「9」)
+  if smallest is None : # 「is」演算子  等号「==」よりも強い
+    smallest = value
+  elif value < smallest :
+    smallest = value
+  print(smallest, value)
+
+print('After', smallest)
+
+
+# 「smallest = None」はマーカーの設置、「if smallest is None :」は最初にそれを引っかけるための手法
+
+
+
+# The "is" and "is not" Operators (「is」演算子、「is not」演算子)
+# 「0 == 0.0」は「true」になる
+# 「0 is 0.0」は「false」になる、つまり型に厳密になる
+
+# Pythonでは「==」の使用を控えめにする
+# 「〇〇 is true」、「◇◇ is false」といったboolean型のチェックに使われることが多い
+# is >>> 「boolean型」、「None型」、「float型」
+# == >>> 「int型」、「string型」
