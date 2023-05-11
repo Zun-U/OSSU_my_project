@@ -135,3 +135,42 @@ print(len(inp))
 print(inp[:12])
 
 # ※ただしこの方法は、10000行程度なら問題ないが、1000万行読み込むのであれば、確定ループが良い
+
+
+
+
+
+
+# Searching Through a File (行検索)
+fhand = open('mbox.txt', encoding='utf-8')
+for line in fhand:
+  if line.startswith('こ') : # プレフィックスとして文字列「こ」を持つ文字列に一致する行を探している
+    print(line)
+
+# プレフィックス -- 接頭辞、前につける、などの意味を持つ英単語。 “prefix” の “pre” （「前」「先」などの意）
+
+
+
+
+# Searching Through a File (Fixed)
+fhand = open('mbox.txt', encoding='utf-8')
+for line in fhand:
+  line = line.rstrip() # 改行を取り消す
+  if line.startswith('こ') :
+    print(line) # print関数は呼び出し時に「\n、改行」を自動で挿入する
+
+
+# ::::::::::::::::::::::::::
+# これはテキストです。\n
+# 読み取り２行目です。\n
+# ３行目になります。\n
+#
+# ↓
+#
+# これはテキストです。\n (ファイルそのもの改行)
+# \n (print関数で自動挿入)
+# 読み取り２行目です。\n (ファイルそのもの改行)
+# \n (print関数で自動挿入)
+# ３行目になります。\n (ファイルそのもの改行)
+# \n (print関数で自動挿入)
+# ::::::::::::::::::::::::::
