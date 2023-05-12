@@ -174,3 +174,58 @@ for line in fhand:
 # ３行目になります。\n (ファイルそのもの改行)
 # \n (print関数で自動挿入)
 # ::::::::::::::::::::::::::
+
+
+
+
+
+# Skipping with continue
+fhand = open('mbox.txt', encoding='utf-8')
+for line in fhand:
+  line = line.rstrip()
+  if not line.startswith('こ') : # 「if not」で特定行以外を弾く方法
+    continue # 指定した言葉で始まる行が見つかるまで、ループを続ける。
+  print(line)
+
+
+# Using in to select lines
+fhand = open('mbox.txt', encoding='utf-8')
+for line in fhand:
+  line = line.rstrip()
+  if not '読み' in line : # 「in」で特定ワードを含む行を以外なら、「continue」に進みループを続ける
+    continue
+  print(line)
+
+
+# Prompt for File Name
+fname = input('Enter the file name: ')
+fhand = open(fname, encoding='utf-8') # テキストファイル名を定数にする代わりに、変数に  
+count = 0
+for line in fhand:
+  if line.startswith('読') :
+    count = count + 1
+print('There were', count, 'subject lines in', fname)
+
+
+
+
+# Bad File Names
+fname = input('Enter the file name:  ')
+
+#「try / except」で、不正な入力に対する対処を行う
+try:
+  fhand = open(fname, encoding='utf-8')
+except: # openでエラーが発生したら
+  print('File cannot be opend:', fname)
+  quit() # ❐❐　この「quit」がpoint。「quit」が無いと、下に進んでしまう　❐❐
+
+  # :::::::::::::::::::::::::::::::::
+  # quit関数　Pythonプログラム全体を、トレースバックなしでサイレントに終了する方法
+  # 何らかのエラーを検知したために、実行を停止したい場合は「quit」が便利
+  # :::::::::::::::::::::::::::::::::
+
+count = 0
+for line in fhand:
+  if line.startswith('３') :
+    count = count + 1
+print('There were', count, 'subject lines in', fname)
