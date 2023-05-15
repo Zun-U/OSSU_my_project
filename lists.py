@@ -167,3 +167,148 @@ print(t[:4])
 print(t[3:])
 
 print(t[:])
+
+
+
+# List Methods
+x = list()
+print(type(x)) # 'list' class
+
+print(dir(x)) # 「list」関数内のすべてのドキュメントを検索
+# append listへ要素の追加
+# count list内の特定の値を探す
+# extend listの末尾に値を追加
+# index list内の値を調べる
+# insert 中央で展開されるlist
+# pop 上部から項目を取り出す
+# remove 中央の項目を削除
+# reverse list内の順番を反転
+# sort 値に基づいてそれらを並べ替える
+
+
+
+# Building a List from Scrach
+
+# 空のlistを作成
+stuff = list() # コンストラクターフォーム　--  Pythonにlistを作成してくださいと命令を送るもの
+# 変数「stuff」はリストオブジェクトになる
+# リスト型
+
+# ※以下でも空のlistを作成できる
+# stuff = []
+
+# appendからアイテムを取り出し、'book'を張り付けることができる
+stuff.append('book')
+
+# 99を追加
+stuff.append(99)
+print(stuff)
+
+# 'cookie'を追加
+stuff.append('cookie')
+print(stuff)
+
+
+
+
+
+
+
+
+# Is Something in a List?
+some = [1, 9, 21, 10, 16]
+
+# 「in」演算子で、リスト内に値があるか判定できる
+print(9 in some) # true
+
+print(15 in some) # false
+
+print(20 not in some) # true
+
+
+
+
+
+# Lists are in Order
+
+# ❐ Listはmutable(可変可能)である ❐
+friends = ['Joseph', 'Glenn', 'Sally']
+friends.sort() # アルファベット順に並び変えられる
+print(friends)
+print(friends[1])
+
+
+
+
+
+# Built-in Functions and Lists
+nums = [3, 41, 12, 9, 74, 15]
+
+# list内の要素数、項目の数を示します
+print(len(nums))
+
+# list内の最大値
+print(max(nums))
+
+# list内の最小値
+print(min(nums))
+
+# list内の値の合算
+print(sum(nums))
+
+# list内の値の平均値
+print(sum(nums) / len(nums))
+
+
+
+# 今までの方法  >>> while loop内のメモリの使用量が少ない
+total = 0
+count = 0
+while True :
+  inp = input('Enter a number: ')
+  if inp == 'done' :
+    break
+  value = float(inp)
+  total = total + value
+  count = count + 1
+  print(total)
+  print(count)
+average = total / count
+print('Average:', average)
+
+
+
+# listを使用した方法 >>> while loop内のメモリの使用量が多い
+numlist = list()
+while True :
+  inp = input('Enter a number: ')
+  if inp == 'done' :
+    break
+  print(inp)
+  value = float(inp)
+  numlist.append(value)
+average = sum(numlist) / len(numlist)
+print('Average', average)
+
+
+
+
+
+
+# Best Friends: Strings and Lists
+
+abc = 'With three words'
+
+# split関数 -- 文字列を空白で分割し、リストを返却する
+stuff = abc.split()
+
+
+
+
+print(stuff)
+print(len(stuff))
+print(stuff[0])
+
+for w in stuff :
+  print(w)
+
