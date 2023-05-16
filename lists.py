@@ -269,8 +269,18 @@ while True :
   if inp == 'done' :
     break
   value = float(inp)
+
+  # ☆　計算を行うループ方法　☆
   total = total + value
   count = count + 1
+
+# ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+#
+# 100万、10億の数値の計算は、『それほど多くのメモリを使用しない』
+#
+# ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆
+
+
   print(total)
   print(count)
 average = total / count
@@ -279,14 +289,29 @@ print('Average:', average)
 
 
 # listを使用した方法 >>> while loop内のメモリの使用量が多い
+
+# ❐❐ Pythonに空のリストを作成してからのリストを割り当てるという"構築的な構文"　❐❐
 numlist = list()
+
 while True :
   inp = input('Enter a number: ')
   if inp == 'done' :
     break
   print(inp)
   value = float(inp)
-  numlist.append(value)
+
+  # ☆　リストに「追加」する計算方法　☆
+  numlist.append(value) # 実際に計算は行わず、リストに追加するだけ
+  # 値を読み取るたびにリストが増加するだけ(計算は行わない)
+
+
+# ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#
+# 100万、または10億の様なデータをループさせる場合、それらを『すべて同時にメモリに保存する』必要がある
+# ※ メモリの負荷がより高い
+#
+# ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
 average = sum(numlist) / len(numlist)
 print('Average', average)
 
@@ -303,8 +328,6 @@ abc = 'With three words'
 stuff = abc.split()
 
 
-
-
 print(stuff)
 print(len(stuff))
 print(stuff[0])
@@ -312,3 +335,44 @@ print(stuff[0])
 for w in stuff :
   print(w)
 
+
+line = 'A lot                       of spaces'
+etc = line.split() # パラメータを渡さなければ、スペースで区切られたリストを返却する
+# ※多数のスペースも一つのスペースとして扱う
+# 基本的には、タブ、改行、またはそのほかの文字
+print(etc)
+
+
+line = 'first;second;third'
+thing = line.split() # スペースで区切られたリストとを返す
+print(thing) # スペースがないから一文字列
+print(len(thing)) # 要素数は1
+
+thing = line.split(';') # セミコロンで分割する　※　引数で与えられた文字列で分割する
+print(thing)
+print(len(thing))
+
+
+fhand = open('mbox-short.txt')
+for line in fhand :
+  line = line.rstrip()
+  if not line.startswith('From ') : # 「from 」で始まる行を探している
+    continue # 「from 」で始まる行で無ければ見つかるまでつづける
+  words = line.split()
+  print(words)
+  print(words[2])
+
+
+# The Double Split Pattern
+fhand = open('mbox-short.txt')
+for line in fhand :
+  line = line.rstrip()
+  if not line.startswith('From ') :
+    continue
+  words = line.split()
+  email = words[1]
+  print(email)
+
+  pieces = email.split('@')
+  print(pieces)
+  print(pieces[1])
