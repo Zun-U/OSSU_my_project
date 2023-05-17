@@ -268,7 +268,11 @@ while True :
   inp = input('Enter a number: ')
   if inp == 'done' :
     break
-  value = float(inp)
+  try:
+    value = float(inp)
+  except:
+    print('Press The Number')
+    continue
 
   # ☆　計算を行うループ方法　☆
   total = total + value
@@ -298,7 +302,11 @@ while True :
   if inp == 'done' :
     break
   print(inp)
-  value = float(inp)
+  try:
+    value = float(inp)
+  except:
+    print('Press The Number')
+    continue
 
   # ☆　リストに「追加」する計算方法　☆
   numlist.append(value) # 実際に計算は行わず、リストに追加するだけ
