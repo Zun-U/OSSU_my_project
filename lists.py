@@ -361,7 +361,7 @@ print(thing)
 print(len(thing))
 
 
-fhand = open('mbox-short.txt')
+fhand = open('mbox-short.txt', encoding='utf-8')
 for line in fhand :
   line = line.rstrip()
   if not line.startswith('From ') : # 「from 」で始まる行を探している
@@ -372,7 +372,7 @@ for line in fhand :
 
 
 # The Double Split Pattern
-fhand = open('mbox-short.txt')
+fhand = open('mbox-short.txt', encoding='utf-8')
 for line in fhand :
   line = line.rstrip()
   if not line.startswith('From ') :
@@ -384,3 +384,36 @@ for line in fhand :
   pieces = email.split('@')
   print(pieces)
   print(pieces[1])
+
+
+
+# Lists and Guardian Pattern
+open_handler = open('mbox-short.txt', encoding='utf-8')
+
+for line in open_handler:
+  line = line.rstrip() # 文字列より後のスペースがすべて破棄される(R、右ストリップ)
+  print('Line:', line)
+  wds = line.split() # スペースで文字列を区切る
+  print('Words:', wds) # ※ デバックするときは、爆発した行の直前にprintしてみる ※
+
+# Gurdian a bit stronger
+  # if len(wds) < 3 :
+    # continue
+# ###############
+
+
+  # if wds[0] != 'From' : # 区切った文字列の０番目（行の最初の文字）が 'From ' でないなら
+
+  # Gurdian in a compound statement
+  if len(wds) < 3 or wds[0] != 'From' : # 単語が3未満、または行の最初の単語が「From」でないなら
+  # ☆☆☆　「短絡評価」と呼ばれる　☆☆☆
+  # 先に「len(wds) < 3」が評価され、trueならor以降の評価がスキップされる
+  # 『if』文では順番が大事（Gurrdianを先に置く）
+
+
+  # ※「単語の文字数が３未満」の条件が最初に来ないと、トレースバックが起きる
+  # if wds[0] != 'From' or len(wds) < 3 :
+
+    print ('ignore')
+    continue
+  print(wds[2])
